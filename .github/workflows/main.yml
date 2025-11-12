@@ -25,9 +25,12 @@ jobs:
     - name: SonarCloud Scan
       uses: SonarSource/sonarqube-scan-action@v2
       with:
-        projectKey: anidermendzhieva
-        organization: AniDermendzhieva
-        token: ${{ secrets.SONAR_TOKEN }}
+        entryPoint: sonar-scanner
+        args: >
+          -Dsonar.projectKey=anidermendzhieva
+          -Dsonar.organization=AniDermendzhieva
+          -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
